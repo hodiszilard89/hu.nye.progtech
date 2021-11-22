@@ -20,8 +20,16 @@ public class Tabla {
         }
     }
 
+    public Mezo getMezo(int i, int j){
+        return jatekTer[i][j];
+    }
+
+
     public void setJatekTeMezo(int i, int j, boolean ertek){
         jatekTer[i][j].setSzabad(ertek);
+    }
+    public void setJatekTalalat(int i, int j){
+        jatekTer[i][j].setTalalt();
     }
 
     public List<Pozicio> getSzabadPozFor(int hajoHossza, boolean orient) {
@@ -71,15 +79,12 @@ public class Tabla {
         return result;
     }
 
-    public void kiiratas() {
-        for (int i = 0; i < 10; i++) {
+    public void sorKiIratas(int i) {
+
             for (int j = 0; j < 10; j++) {
-                if (jatekTer[i][j].isSzabad())
-                    System.out.print("\u001B[34m[ ]");
-                if(!jatekTer[i][j].isSzabad())
-                    System.out.print("\u001B[33m[#]");
+                System.out.print(jatekTer[i][j].toString());
             }
-            System.out.println();
-        }
+            //System.out.println();
+
     }
 }

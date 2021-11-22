@@ -1,22 +1,30 @@
 package com.company;
 
-import java.sql.PreparedStatement;
+
 import java.util.Objects;
 
 public class Mezo {
     private Pozicio pozicio;
     private boolean szabad ;
-
+    private boolean talalat;
+    private boolean lovesHelye;
     public Mezo(Pozicio pozicio, boolean szabad) {
         this.pozicio = pozicio;
         this.szabad = szabad;
-
+        this.talalat = false;
+        this.lovesHelye = false;
     }
 
-    public Pozicio getPozicio() {
-        return pozicio;
+    public void setMelle(){
+        this.lovesHelye=true;
+    }
+    public void setTalalt (){
+        this.talalat=true;
     }
 
+    public boolean getTalalat (){
+        return this.talalat;
+    }
     public boolean isSzabad() {
         return szabad;
     }
@@ -25,14 +33,26 @@ public class Mezo {
         this.szabad = szabad;
     }
 
+
     @Override
     public String toString() {
-        String result = "";
-        if (this.isSzabad()) {
-            result = "\u001B[34m[ ]";
-        } else {
-            result = "\u001B[33m[#]";
+        String result="";
+
+        if (lovesHelye){
+            return  "\u001B[31m[X]";
         }
+        if (getTalalat()){
+            return "\u001B[32m[0]";
+        }
+        if (isSzabad()){
+            return "\u001B[34m[ ]";
+        }
+        if (!isSzabad()){
+            return  "\u001B[33m[#]";
+        }
+
+
+
         return result;
     }
 

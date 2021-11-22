@@ -80,8 +80,6 @@ public class JatekVezerlo {
                 jatekter2.setJatekTeMezo(x, y, false);
             }
         }
-        jatekter2.kiiratas();
-
     }
 
     static boolean intToBool(int i) {

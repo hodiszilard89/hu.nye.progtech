@@ -29,9 +29,9 @@ public class Mezo {
     public String toString() {
         String result = "";
         if (this.isSzabad()) {
-            result = "[ ]";
+            result = "\u001B[34m[ ]";
         } else {
-            result = "[#]";
+            result = "\u001B[33m[#]";
         }
         return result;
     }

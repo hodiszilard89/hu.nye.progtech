@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 
@@ -25,8 +24,8 @@ public class Hajo {
         if (!orient) x = 1;
         if (orient) y = 1;
         List<Pozicio> hajoElemek = new ArrayList<>();
-        for (int h =0 ; h < hossz; h++) {
-            hajoElemek.add(new Pozicio(this.kezdoPoz.getX()+(x*h), this.kezdoPoz.getY()+(y*h)));
+        for (int h = 0; h < hossz; h++) {
+            hajoElemek.add(new Pozicio(this.kezdoPoz.getX() + (x * h), this.kezdoPoz.getY() + (y * h)));
         }
 
         return hajoElemek;

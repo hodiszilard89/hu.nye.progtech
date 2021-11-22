@@ -75,9 +75,9 @@ public class Tabla {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (jatekTer[i][j].isSzabad())
-                    System.out.print("[ ]");
+                    System.out.print("\u001B[34m[ ]");
                 if(!jatekTer[i][j].isSzabad())
-                    System.out.print("[#]");
+                    System.out.print("\u001B[33m[#]");
             }
             System.out.println();
         }

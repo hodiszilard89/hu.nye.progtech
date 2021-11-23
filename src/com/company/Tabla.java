@@ -80,7 +80,7 @@ public class Tabla {
     }
 
     public void sorKiIratas(int i) {
-
+            System.out.printf("%2d",i+1);
             for (int j = 0; j < 10; j++) {
                 System.out.print(jatekTer[i][j].toString());
             }

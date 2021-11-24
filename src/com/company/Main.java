@@ -19,13 +19,16 @@ public class Main {
 
     public static void main(String[] args){
 
-        int x1=0,y1=0;
+         int x1=0,y1=0;
         Pozicio aiLoves;
         jatekosTabla =new JatekVezerlo().getTabla();
         aiTabla = new JatekVezerlo().getTabla();
-        while(true){
-            tablaKirajzolas();
-            loves=koordinataBe();
+        tablaKirajzolas();
+        loves=koordinataBe();
+
+        while( loves!=null ){
+
+
             if (!aiTabla.getMezo(loves.getX(), loves.getY()).isSzabad()){
                 System.out.println("Játékos: TALÁLAT");
                 sajatLoves.getMezo(loves.getX(), loves.getY()).setTalalt();
@@ -43,7 +46,12 @@ public class Main {
                 jatekosTabla.getMezo(x1,y1).setLovesHelye();
                 System.out.println("Gép MELLÉ");
             }
+            tablaKirajzolas();
+            loves=koordinataBe();
         }
+
+
+
 
     }
         static Pozicio koordinataBe() {
@@ -59,6 +67,9 @@ public class Main {
             while (!kilep) {
                 System.out.print("Kérem a koordinátát (pl.: a-j:1-10):");
                 kordinata = sc.nextLine();
+                if (kordinata.equals("exit")){
+                    return null;
+                    }
                 mt = pt.matcher(kordinata);
                 if (mt.matches()) {
                     kordinata=kordinata.toUpperCase();

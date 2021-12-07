@@ -1,10 +1,12 @@
-package com.company;
+package com.company.entity;
+
+import com.company.interfaceek.HajoInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Hajo {
+public class Hajo implements HajoInterface {
     private List<Pozicio> hajoElemek;
     private Pozicio kezdoPoz;
     private int hossz;

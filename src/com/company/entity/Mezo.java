@@ -1,4 +1,4 @@
-package com.company;
+package com.company.entity;
 
 
 import java.util.Objects;
@@ -20,9 +20,6 @@ public class Mezo {
         this.lovesHelye =true;
     }
 
-    /*public void setMelle(){
-            this.lovesHelye=true;
-        }*/
     public void setTalalt() {
         this.talalat = true;
     }

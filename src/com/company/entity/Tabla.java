@@ -1,6 +1,5 @@
-package com.company;
+package com.company.entity;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Tabla {
@@ -27,9 +26,6 @@ public class Tabla {
 
     public void setJatekTeMezo(int i, int j, boolean ertek){
         jatekTer[i][j].setSzabad(ertek);
-    }
-    public void setJatekTalalat(int i, int j){
-        jatekTer[i][j].setTalalt();
     }
 
     public List<Pozicio> getSzabadPozFor(int hajoHossza, boolean orient) {
@@ -61,23 +57,7 @@ public class Tabla {
         return result;
     }
 
-    public Set foglaltMezok(){
-        Set<Pozicio> result = new HashSet<>();
-        for(int i=0; i<10; i++){
-            for(int j=0; j<10; j++){
-                if (!jatekTer[i][j].isSzabad()){
-                    for(int k=-1; k<2; k++){
-                        for(int l=-1; l<2; l++){
-                            result.add(new Pozicio(i+k,j+l));
-                        }
-                    }
-                }
-            }
-        }
-        result.removeIf(pozicio -> ((pozicio.isNegativ())||(pozicio.isOut())));
 
-        return result;
-    }
 
     public void sorKiIratas(int i) {
             System.out.printf("%2d",i+1);

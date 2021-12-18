@@ -1,11 +1,11 @@
 package interfaceek;
 
 
-import domain.Pozicio;
-import domain.Tabla;
+import model.Pozicio;
+import model.Tabla;
 
 public interface MainServiceInterface {
     void hajoLerakas(Tabla tabla, Pozicio poz, int hossz, boolean orinet);
-    Tabla getTabla();
+    Tabla getRandomJatekTer();
     boolean intToBool(int i);
 }

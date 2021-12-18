@@ -1,18 +1,20 @@
 package service;
 
 
-import domain.Pozicio;
+import model.Pozicio;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.DataFormatException;
 
 public class UserInput {
 
     static private final String kOODTINATA_REG = "^[a-jA-J]+\\:+(([0-9])||10)";
     public UserInput(){};
-    public Pozicio koordinataBe() throws IOException {
+    public Pozicio koordinataBe() {
         Pozicio result = null;
         int x=0;
         int y=0;
@@ -46,12 +48,31 @@ public class UserInput {
         }
         return result;
     }
-    public char kiLepesValasz() throws IOException {
-        System.out.println("Mented kilépés előtt? (y/n)");
-        char c=(char)System.in.read();
-        System.in.read();
-        return c;
 
+
+
+
+    public boolean userValasz(String kerdes, InputStream in ) {
+        boolean result=false;
+        char c;
+
+        try {
+                System.out.println(kerdes + " (y/n)");
+                c = (char) in.read();
+                in.read();
+                if (c == 'n') {result = false;}
+                if (c == 'y') {result = true; }
+
+                if ((c!='n')&&(c!='y')) throw new IOException();
+            }catch(IOException e){
+                System.out.println("Nem megfelelő válasz");
+
+            }
+        return result;
     }
-
+    public String nevBekeres(InputStream in){
+        System.out.print("Add meg a neved:");
+        Scanner sc= new Scanner(in);
+        return  sc.nextLine();
+    }
 }

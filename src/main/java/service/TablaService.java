@@ -1,17 +1,17 @@
 package service;
 
-import domain.Hajo;
-import domain.Pozicio;
-import domain.Tabla;
+import model.Hajo;
+import model.Pozicio;
+import model.Tabla;
 import interfaceek.MainServiceInterface;
 
 import java.util.*;
 
-public class MainService implements MainServiceInterface {
-    private Random random = new Random();
+public class TablaService implements MainServiceInterface {
+    private final Random random = new Random();
     boolean orient;
-    private int kiValaszPozi;
-    public MainService() {}
+
+    public TablaService() {}
 
     public void hajoLerakas(Tabla tabla, Pozicio poz, int hossz, boolean orient) {
         Set<Pozicio> halmaz = new HashSet<>();
@@ -33,7 +33,7 @@ public class MainService implements MainServiceInterface {
     }
 
 
-    public Tabla getTabla(){
+    public Tabla getRandomJatekTer(){
         List<Pozicio> szabadHajoHelyek ;
         List<Hajo>  hajok=new ArrayList<>();
         Tabla jatekTer=new Tabla(10,10);
@@ -44,7 +44,7 @@ public class MainService implements MainServiceInterface {
 
                 orient = intToBool(random.nextInt(2));
                 szabadHajoHelyek = jatekTer.getSzabadPozFor(h, orient);
-                kiValaszPozi = random.nextInt(szabadHajoHelyek.size());
+                int kiValaszPozi = random.nextInt(szabadHajoHelyek.size());
                 hajoLerakas(jatekTer, szabadHajoHelyek.get(kiValaszPozi), h, orient);
                 hajok.add(new Hajo(szabadHajoHelyek.get(kiValaszPozi), h, orient));
                 h--;
@@ -53,10 +53,10 @@ public class MainService implements MainServiceInterface {
         int x = 0;
         int y = 0;
         Tabla result = new Tabla(10, 10);
-        for (int i = 0; i < hajok.size(); i++) {
-            for (int j = 0; j < hajok.get(i).getHajoElemek().size(); j++) {
-                x = hajok.get(i).getHajoElemek().get(j).getX();
-                y = hajok.get(i).getHajoElemek().get(j).getY();
+        for (Hajo hajo : hajok) {
+            for (int j = 0; j < hajo.getHajoElemek().size(); j++) {
+                x = hajo.getHajoElemek().get(j).getX();
+                y = hajo.getHajoElemek().get(j).getY();
                 result.setJatekTeMezo(x, y, false);
             }
         }

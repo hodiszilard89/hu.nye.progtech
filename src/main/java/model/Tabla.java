@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 

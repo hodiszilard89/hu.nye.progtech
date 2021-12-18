@@ -9,6 +9,7 @@ import java.io.*;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class UserInputTest {
 
@@ -26,10 +27,10 @@ public class UserInputTest {
         in= new ByteArrayInputStream("n".getBytes());
 
         //when
-        char result=ui.kiLepesValasz(in);
+        boolean result=ui.userValasz("Test kerdes ",in);
 
         //then
-        assertEquals('n',result);
+        assertFalse(result);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package domain;
+package model;
 
 
 import interfaceek.HajoInterface;
@@ -8,6 +8,7 @@ import java.util.List;
 
 
 public class  Hajo implements HajoInterface {
+
     private List<Pozicio> hajoElemek;
     private Pozicio kezdoPoz;
     private int hossz;

@@ -1,7 +1,7 @@
 package service;
 
 
-import domain.Tabla;
+import model.Tabla;
 
 public class UIService {
     public UIService() {}

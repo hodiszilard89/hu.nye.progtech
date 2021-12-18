@@ -1,7 +1,7 @@
 package interfaceek;
 
 
-import domain.Pozicio;
+import model.Pozicio;
 
 import java.util.List;
 

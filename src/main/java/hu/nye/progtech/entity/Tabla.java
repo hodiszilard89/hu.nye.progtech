@@ -1,6 +1,8 @@
-package model;
+package hu.nye.progtech.entity;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
+import hu.nye.progtech.model.Mezo;
+import hu.nye.progtech.model.Pozicio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,29 +10,41 @@ import java.util.List;
 @XmlRootElement(name = "tabla")
 public class Tabla {
 
-    private Mezo[][] jatekTer;
-
     public Mezo[][] getJatekTer() {
         return jatekTer;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    private Mezo[][] jatekTer;
 
     public void setJatekTer(Mezo[][] jatekTer) {
         this.jatekTer = jatekTer;
     }
 
-    private int x, y;
-    public Tabla(){}
-    public Tabla(int x, int y) {
-        this.x = 10;
-        this.y = 10;
-        jatekTer = new Mezo[x][y];
+    private  int x=10;
+    private  int y=10;
 
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                jatekTer[i][j] = new Mezo(new Pozicio(i, j), true);
-            }
+    public Tabla(){}
+
+    public Tabla(Mezo[][] jatekTer) {
+        this.jatekTer=jatekTer;
         }
-    }
+
 
     public Mezo getMezo(int i, int j){
         return jatekTer[i][j];

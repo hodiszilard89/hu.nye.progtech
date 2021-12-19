@@ -1,7 +1,7 @@
-package interfaceek;
+package hu.nye.progtech.interfaceek;
 
 
-import model.Pozicio;
+import hu.nye.progtech.model.Pozicio;
 
 import java.util.List;
 

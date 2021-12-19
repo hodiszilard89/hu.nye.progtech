@@ -1,7 +1,7 @@
-package model;
+package hu.nye.progtech.model;
 
 
-import interfaceek.HajoInterface;
+import hu.nye.progtech.interfaceek.HajoInterface;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package service;
+package hu.nye.progtech.service;
 
 
-import model.Tabla;
+import hu.nye.progtech.entity.Tabla;
 
-public class UIService {
-    public UIService() {}
+public class UIOutPutService {
+    public UIOutPutService() {}
 
     public void tablaKirajzolas(Tabla tabla1, Tabla tabla2){
 

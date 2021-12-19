@@ -1,15 +1,18 @@
-package interfaceek;
+package hu.nye.progtech.repository;
 
-import model.Stat;
-import model.Tabla;
+import hu.nye.progtech.model.Stat;
+import hu.nye.progtech.entity.Tabla;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
+import org.springframework.stereotype.Repository;
 
 import java.io.File;
 
-public class XmlGameSaveRep implements GameSaveRepo{
+
+@Repository
+public class GameSaveRep implements GameSaveRepoForXml {
 
 
 
@@ -23,6 +26,7 @@ public class XmlGameSaveRep implements GameSaveRepo{
 
             marshaller.marshal(tabla,new File (tablaNev));
         } catch (JAXBException e) {
+
             e.printStackTrace();
         }
 
@@ -40,6 +44,7 @@ public class XmlGameSaveRep implements GameSaveRepo{
 
             marshaller.marshal(stat,new File (statTabla));
         } catch (JAXBException e) {
+
             e.printStackTrace();
         }
     }

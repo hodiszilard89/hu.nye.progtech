@@ -1,7 +1,7 @@
-package service;
+package hu.nye.progtech.service;
 
 import java.io.File;
-import java.io.IOException;
+
 
 public class FileService {
 

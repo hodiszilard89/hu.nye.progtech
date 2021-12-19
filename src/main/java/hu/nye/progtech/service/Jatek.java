@@ -1,17 +1,16 @@
-package service;
+package hu.nye.progtech.service;
 
-import interfaceek.XmlGameSaveRep;
-import model.Pozicio;
-import model.Stat;
-import model.Tabla;
+import hu.nye.progtech.repository.GameSaveRep;
+import hu.nye.progtech.model.Pozicio;
+import hu.nye.progtech.model.Stat;
+import hu.nye.progtech.entity.Tabla;
 
-import java.io.IOException;
 import java.util.Random;
 
 public class Jatek {
 
-    private static service.UIService us = new UIService();
-    private static UserInput ui = new UserInput();
+    private static UIOutPutService us = new UIOutPutService();
+    private static UIInPutService ui = new UIInPutService();
     private static TablaService ms= new TablaService();
 
 
@@ -77,10 +76,11 @@ public class Jatek {
     }
     static void mentes() {
         if (ui.userValasz("Befejezed a játékot",System.in)) {
-            new XmlGameSaveRep().save(jatekosTabla, "jatekosTabla.xml");
-            new XmlGameSaveRep().save(aiTabla, "aiTabla.xml");
-            new XmlGameSaveRep().save(sajatLoves, "sajatloves.xml");
-            new XmlGameSaveRep().saveStat(stat, "statisztika.xml");
+            new GameSaveRep().save(jatekosTabla, "jatekosTabla.xml");
+            new GameSaveRep().save(aiTabla, "aiTabla.xml");
+            new GameSaveRep().save(sajatLoves, "sajatloves.xml");
+            new GameSaveRep().saveStat(stat, "statisztika.xml");
+            System.out.println("Játék elmentve");
         }
 
     }

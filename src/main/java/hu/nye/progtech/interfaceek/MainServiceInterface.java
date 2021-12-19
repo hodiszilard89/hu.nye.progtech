@@ -1,8 +1,8 @@
-package interfaceek;
+package hu.nye.progtech.interfaceek;
 
 
-import model.Pozicio;
-import model.Tabla;
+import hu.nye.progtech.model.Pozicio;
+import hu.nye.progtech.entity.Tabla;
 
 public interface MainServiceInterface {
     void hajoLerakas(Tabla tabla, Pozicio poz, int hossz, boolean orinet);

@@ -1,4 +1,4 @@
-package model;
+package hu.nye.progtech.model;
 
 
 import jakarta.xml.bind.annotation.XmlRootElement;

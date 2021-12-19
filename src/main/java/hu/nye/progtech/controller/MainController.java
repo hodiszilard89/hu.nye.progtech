@@ -1,11 +1,11 @@
-package controller;
+package hu.nye.progtech.controller;
 
 
-import model.Stat;
-import model.Tabla;
-import interfaceek.XmlGameSaveRep;
+import hu.nye.progtech.model.Stat;
+import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.repository.GameSaveRep;
 import jakarta.xml.bind.JAXBException;
-import service.*;
+import hu.nye.progtech.service.*;
 
 
 
@@ -21,23 +21,25 @@ public class MainController {
     static final int x = 10;
     static final int y = 10;
 
-    static private Tabla aiTabla = new Tabla(x,y);
-    static private Tabla sajatLoves = new Tabla(x,y);
-    static private Tabla jatekosTabla = new Tabla(x,y);
+    static private Tabla aiTabla ;
+    static private Tabla sajatLoves ;
+    static private Tabla jatekosTabla;
     static private Stat stat ;
     private final FileService fs= new FileService();
-    UserInput ui=new UserInput();
+    UIInPutService ui=new UIInPutService();
 
 
 
 
     public MainController() throws JAXBException {
         boolean letezikMentettJatek=true;
+
         try {
-            jatekosTabla = new XmlGameSaveRep().load(jatekosTablaFile);
-            aiTabla = new XmlGameSaveRep().load(aiTablaFile);
-            sajatLoves = new XmlGameSaveRep().load(jatekoLovesekFile);
-            stat = new XmlGameSaveRep().loadStat(jatekosStatFile);
+            jatekosTabla = new GameSaveRep().load(jatekosTablaFile);
+            aiTabla = new GameSaveRep().load(aiTablaFile);
+            sajatLoves = new GameSaveRep().load(jatekoLovesekFile);
+            stat = new GameSaveRep().loadStat(jatekosStatFile);
+
             }
          catch (IllegalArgumentException | NullPointerException e) {
 
@@ -50,25 +52,18 @@ public class MainController {
                 fs.delete(jatekoLovesekFile);
                 fs.delete(jatekosStatFile);
                 fs.delete(aiTablaFile);
-                init();
+                new UjJatek();
+                }
+                else{
+                    System.out.println("Üdvözöllek: "+ stat.getJatekosNeve());
+                    new UjJatek(jatekosTabla,aiTabla,sajatLoves,stat);
+                }
             }
-        }
         else{
-             init();
+            new UjJatek();
         }
 
-        JatekFolytatas ujJatek = new JatekFolytatas(ms);
-        ujJatek.setStat(stat);
-        ujJatek.setAiTabla(aiTabla);
-        ujJatek.setSajatLoves(sajatLoves);
-        ujJatek.setJatekosTabla(jatekosTabla);
-        new UjJatek();
-
     }
-    private void init(){
-        jatekosTabla=ms.getRandomJatekTer();
-        aiTabla=ms.getRandomJatekTer();
 
-    }
 
 }

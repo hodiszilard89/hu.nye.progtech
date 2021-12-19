@@ -1,4 +1,4 @@
-package service;
+package hu.nye.progtech.service;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class UserInputTest {
 
     private ByteArrayInputStream in;
-    private UserInput ui=new UserInput();
+    private UIInPutService ui=new UIInPutService();
 
     @BeforeEach
     public void setup(){

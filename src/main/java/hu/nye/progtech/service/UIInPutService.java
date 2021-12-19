@@ -1,19 +1,18 @@
-package service;
+package hu.nye.progtech.service;
 
 
-import model.Pozicio;
+import hu.nye.progtech.model.Pozicio;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.zip.DataFormatException;
 
-public class UserInput {
+public class UIInPutService {
 
     static private final String kOODTINATA_REG = "^[a-jA-J]+\\:+(([0-9])||10)";
-    public UserInput(){};
+    public UIInPutService(){};
     public Pozicio koordinataBe() {
         Pozicio result = null;
         int x=0;

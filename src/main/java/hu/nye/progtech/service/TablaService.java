@@ -1,9 +1,10 @@
-package service;
+package hu.nye.progtech.service;
 
-import model.Hajo;
-import model.Pozicio;
-import model.Tabla;
-import interfaceek.MainServiceInterface;
+import hu.nye.progtech.model.Hajo;
+import hu.nye.progtech.model.Mezo;
+import hu.nye.progtech.model.Pozicio;
+import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.interfaceek.MainServiceInterface;
 
 import java.util.*;
 
@@ -12,6 +13,16 @@ public class TablaService implements MainServiceInterface {
     boolean orient;
 
     public TablaService() {}
+
+    public Mezo[][] getNewTabla(){
+        Mezo[][] result = new Mezo[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                result[i][j] = new Mezo(new Pozicio(i, j), true);
+              }
+            }
+        return result;
+    }
 
     public void hajoLerakas(Tabla tabla, Pozicio poz, int hossz, boolean orient) {
         Set<Pozicio> halmaz = new HashSet<>();
@@ -36,7 +47,7 @@ public class TablaService implements MainServiceInterface {
     public Tabla getRandomJatekTer(){
         List<Pozicio> szabadHajoHelyek ;
         List<Hajo>  hajok=new ArrayList<>();
-        Tabla jatekTer=new Tabla(10,10);
+        Tabla jatekTer=new Tabla(new TablaService().getNewTabla());
         int h ;
         for (int j = 4; j > 0; j--) {
             h = j;
@@ -52,7 +63,7 @@ public class TablaService implements MainServiceInterface {
         }
         int x = 0;
         int y = 0;
-        Tabla result = new Tabla(10, 10);
+        Tabla result = new Tabla(new TablaService().getNewTabla());
         for (Hajo hajo : hajok) {
             for (int j = 0; j < hajo.getHajoElemek().size(); j++) {
                 x = hajo.getHajoElemek().get(j).getX();

@@ -1,4 +1,4 @@
-package model;
+package hu.nye.progtech.model;
 
 import java.util.Objects;
 
@@ -12,6 +12,7 @@ public class Pozicio {
     public void setY(int y) {
         this.y = y;
     }
+
     public Pozicio(){};
 
     public Pozicio(int x, int y) {
@@ -59,4 +60,5 @@ public class Pozicio {
         if ((getX()>9)||(getY()>9)) result=true;
         return result;
     }
+
 }

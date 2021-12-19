@@ -1,24 +1,9 @@
-package model;
+package hu.nye.progtech.model;
 
 
 import java.util.Objects;
 
 public class Mezo {
-    private Pozicio pozicio;
-    private boolean szabad;
-    private boolean talalat;
-    private boolean lovesHelye;
-
-    public Mezo(){}
-
-    public Pozicio getPozicio() {
-        return pozicio;
-    }
-
-    public void setPozicio(Pozicio pozicio) {
-        this.pozicio = pozicio;
-    }
-
     public boolean isTalalat() {
         return talalat;
     }
@@ -33,6 +18,21 @@ public class Mezo {
 
     public void setLovesHelye(boolean lovesHelye) {
         this.lovesHelye = lovesHelye;
+    }
+
+    private Pozicio pozicio;
+    private boolean szabad;
+    private boolean talalat;
+    private boolean lovesHelye;
+
+    public Mezo(){}
+
+    public Pozicio getPozicio() {
+        return pozicio;
+    }
+
+    public void setPozicio(Pozicio pozicio) {
+        this.pozicio = pozicio;
     }
 
     public Mezo(Pozicio pozicio, boolean szabad) {

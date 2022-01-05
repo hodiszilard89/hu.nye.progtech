@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>hu.nye</groupId>
-    <artifactId>torpedo</artifactId>
+    <artifactId>progtech</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -18,6 +18,13 @@
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version>
+
         </dependency>
 
         <dependency>
@@ -44,6 +51,11 @@
             <artifactId>spring-context</artifactId>
             <version>5.3.12</version>
         </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
 
     </dependencies>
     <build>
@@ -62,7 +74,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        hu.nye.progtech.torpedo.Main
+                                        hu.nye.progtech.Main
                                     </mainClass>
                                 </manifest>
                             </archive>

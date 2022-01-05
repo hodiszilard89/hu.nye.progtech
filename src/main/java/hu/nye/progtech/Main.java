@@ -1,22 +1,25 @@
 package hu.nye.progtech;
 
 
-import hu.nye.progtech.controller.MainController;
-import hu.nye.progtech.entity.Tabla;
-import hu.nye.progtech.repository.GameSaveRep;
-import hu.nye.progtech.service.TablaService;
-import jakarta.xml.bind.JAXBException;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 
 public class Main {
 
-    public static void main(String[] args) throws JAXBException {
+    public static void main(String[] args) {
+        try {
+            DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");
+        } catch (SQLException e) {
+            System.out.println("Sikertelen");
+        }
 
-        //ApplicationContext applicationContext = new AnnotationConfigApplicationContext("hu.nye.progtech");
-        new MainController();
-//        new GameSaveRep().save(new Tabla(new TablaService().getNewTabla()),"proba.xml");
+
+        new AnnotationConfigApplicationContext("hu.nye.progtech");
+
+        // new MainController().start();
     }
 }
 

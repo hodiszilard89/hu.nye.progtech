@@ -11,8 +11,9 @@ import hu.nye.progtech.service.*;
 
 
 public class MainController {
-    private final TablaService ms = new TablaService();
-
+    private TablaService ts ;
+    private FileService fs;
+    private GameSaveRep gsp;
     static final String jatekosTablaFile="jatekostabla.xml";
     static final String aiTablaFile="aitabla.xml";
     static final String jatekoLovesekFile="sajatloves.xml";
@@ -25,26 +26,31 @@ public class MainController {
     static private Tabla sajatLoves ;
     static private Tabla jatekosTabla;
     static private Stat stat ;
-    private final FileService fs= new FileService();
+    private UjJatek ujJatek;
     UIInPutService ui=new UIInPutService();
 
+    public MainController(TablaService ts, FileService fs, UIInPutService ui, GameSaveRep gsp) {
+        this.ts = ts;
+        this.fs = fs;
+        this.ui = ui;
+        this.gsp=gsp;
+    }
 
-
-
-    public MainController() throws JAXBException {
+    public MainController(){};
+    public void start(){
         boolean letezikMentettJatek=true;
 
         try {
-            jatekosTabla = new GameSaveRep().load(jatekosTablaFile);
-            aiTabla = new GameSaveRep().load(aiTablaFile);
-            sajatLoves = new GameSaveRep().load(jatekoLovesekFile);
-            stat = new GameSaveRep().loadStat(jatekosStatFile);
+            jatekosTabla = gsp.load(jatekosTablaFile);
+            aiTabla = gsp.load(aiTablaFile);
+            sajatLoves = gsp.load(jatekoLovesekFile);
+            stat = gsp.loadStat(jatekosStatFile);
 
             }
-         catch (IllegalArgumentException | NullPointerException e) {
+         catch (IllegalArgumentException | NullPointerException | JAXBException e) {
 
-            letezikMentettJatek=false;
-        }
+             letezikMentettJatek = false;
+         }
 
         if (letezikMentettJatek){
             if( !ui.userValasz("Folytatod az előző játékot? ", System.in)){

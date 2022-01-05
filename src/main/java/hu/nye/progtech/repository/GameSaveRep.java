@@ -9,11 +9,32 @@ import jakarta.xml.bind.Unmarshaller;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
+import java.sql.Connection;
 
 
-@Repository
 public class GameSaveRep implements GameSaveRepoForXml {
 
+//    private Connection con;
+//
+//    @Override
+//    public void save(Tabla tabla, Stat stat) {
+//
+//    }
+//
+//    @Override
+//    public Tabla loadTabla() {
+//        return null;
+//    }
+//
+//    @Override
+//    public Stat loadStat() {
+//        return null;
+//    }
+//
+//    @Override
+//    public void close() throws Exception {
+//        con.close();
+//    }
 
 
     @Override
@@ -29,9 +50,6 @@ public class GameSaveRep implements GameSaveRepoForXml {
 
             e.printStackTrace();
         }
-
-
-
     }
 
     @Override
@@ -63,4 +81,7 @@ public class GameSaveRep implements GameSaveRepoForXml {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         return (Stat) unmarshaller.unmarshal(new File(statTabla));
     }
+
+
+
 }

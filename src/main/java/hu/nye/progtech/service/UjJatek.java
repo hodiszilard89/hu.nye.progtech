@@ -18,7 +18,10 @@ public class UjJatek {
     private Tabla sajatLoves ;
     private Stat stat;
 
-
+    public UjJatek( UIInPutService uiInPutService, TablaService tablaService) {
+        this.ui=uiInPutService;
+        this.ts=tablaService;
+    }
 
 
     public UjJatek() {
@@ -26,7 +29,7 @@ public class UjJatek {
         jatekosTabla= ts.getRandomJatekTer();
         aiTabla=ts.getRandomJatekTer();
         sajatLoves = new Tabla(ts.getNewTabla());
-        new Jatek(jatekosTabla,aiTabla,sajatLoves,stat);
+        new UjJatek(jatekosTabla,aiTabla,sajatLoves,stat);
 
     }
 

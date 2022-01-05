@@ -11,7 +11,7 @@ public class Jatek {
 
     private static UIOutPutService us = new UIOutPutService();
     private static UIInPutService ui = new UIInPutService();
-    private static TablaService ms= new TablaService();
+    private static TablaService ts = new TablaService();
 
 
     private static  Tabla jatekosTabla;
@@ -19,6 +19,11 @@ public class Jatek {
     private static Tabla sajatLoves;
     private static Stat stat;
 
+    public Jatek(UIOutPutService uiOutPutService, UIInPutService uiInPutService, TablaService tablaService){
+         us = uiOutPutService;
+         ui = uiInPutService;
+         ts = tablaService;
+    }
 
     public Jatek(Tabla jatekosTabla, Tabla aiTabla, Tabla sajatLoves, Stat stat) {
         this.jatekosTabla = jatekosTabla;

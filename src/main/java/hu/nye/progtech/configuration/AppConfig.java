@@ -40,7 +40,7 @@ public class AppConfig {
     }
 
     @Bean
-    GameSaveRep gsp(){
+    GameSaveRep gameSaveRep(){
         return new GameSaveRep();
     }
 

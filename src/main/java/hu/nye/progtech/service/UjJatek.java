@@ -14,22 +14,22 @@ public class UjJatek {
 
     //tablak
     private Tabla jatekosTabla;
-    private Tabla aiTabla ;
-    private Tabla sajatLoves ;
+    private Tabla aiTabla;
+    private Tabla sajatLoves;
     private Stat stat;
 
-    public UjJatek( UIInPutService uiInPutService, TablaService tablaService) {
-        this.ui=uiInPutService;
-        this.ts=tablaService;
+    public UjJatek(UIInPutService uiInPutService, TablaService tablaService) {
+        this.ui = uiInPutService;
+        this.ts = tablaService;
     }
 
 
     public UjJatek() {
         stat = new Stat(ui.nevBekeres(System.in));
-        jatekosTabla= ts.getRandomJatekTer();
-        aiTabla=ts.getRandomJatekTer();
+        jatekosTabla = ts.getRandomJatekTer();
+        aiTabla = ts.getRandomJatekTer();
         sajatLoves = new Tabla(ts.getNewTabla());
-        new UjJatek(jatekosTabla,aiTabla,sajatLoves,stat);
+        new UjJatek(jatekosTabla, aiTabla, sajatLoves, stat);
 
     }
 
@@ -38,9 +38,8 @@ public class UjJatek {
         this.aiTabla = aiTabla;
         this.sajatLoves = sajatLoves;
         this.stat = stat;
-        new Jatek(jatekosTabla,aiTabla,sajatLoves,stat);
+        new Jatek(jatekosTabla, aiTabla, sajatLoves, stat);
     }
-
 
 
     public void setUi(UIInPutService ui) {
@@ -50,11 +49,6 @@ public class UjJatek {
     public void setTs(TablaService ts) {
         this.ts = ts;
     }
-
-
-
-
-
 
 
 }

@@ -11,7 +11,7 @@ import java.sql.*;
 public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
 
     private Connection con;
-    private Tabla tabla;
+
 
     private static final String INSERT_STATEMENT = "insert into game_save (jatekostabla,sajatloves,aitabla) values(?,?,?)";
     private static final String SELECT_STATEMENT = "select * from game_save";
@@ -22,7 +22,7 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
     }
 
 
-    public void save(Tabla jatekosTabla,Tabla sajatLoves, Tabla aiTabla) {
+    public void save(Tabla jatekosTabla, Tabla sajatLoves, Tabla aiTabla) {
         try (PreparedStatement ps = con.prepareStatement(INSERT_STATEMENT)) {
             ps.setString(1, tablaToString(jatekosTabla));
             ps.setString(2, tablaToString(sajatLoves));
@@ -37,12 +37,10 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
     }
 
     public void delete() {
-        try{
-        PreparedStatement st= con.prepareStatement(DELETE_STATEMENT);
-        st.executeUpdate();
-        }
-
-        catch (SQLException ex){
+        try {
+            PreparedStatement st = con.prepareStatement(DELETE_STATEMENT);
+            st.executeUpdate();
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
@@ -53,13 +51,13 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
         Mezo[][] mezoTomb = new Mezo[10][10];
         Tabla result = new Tabla();
         System.out.println(tablaNev);
-        try ( PreparedStatement ps = con.prepareStatement(SELECT_STATEMENT)){
+        try (PreparedStatement ps = con.prepareStatement(SELECT_STATEMENT)) {
 
 
-            ResultSet rs= ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             rs.next();
-            if(rs.getRow()==0) return null;
+            if (rs.getRow() == 0) return null;
             System.out.println(rs);
             String map = rs.getString(tablaNev);
             String[] tomb = map.split("-");

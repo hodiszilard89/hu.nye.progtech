@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Pozicio {
     private int x;
     private int y;
+
     public void setX(int x) {
         this.x = x;
     }
@@ -13,7 +14,8 @@ public class Pozicio {
         this.y = y;
     }
 
-    public Pozicio(){};
+    public Pozicio() {
+    }
 
     public Pozicio(int x, int y) {
         this.x = x;
@@ -49,15 +51,15 @@ public class Pozicio {
         return Objects.hash(x, y);
     }
 
-    public boolean isNegativ(){
-        boolean result= false;
-        if ((getX()<0)||(getY()<0)) result=true;
+    public boolean isNegativ() {
+        boolean result = false;
+        if ((getX() < 0) || (getY() < 0)) result = true;
         return result;
     }
 
-    public boolean isOut(){
-        boolean result= false;
-        if ((getX()>9)||(getY()>9)) result=true;
+    public boolean isOut() {
+        boolean result = false;
+        if ((getX() > 9) || (getY() > 9)) result = true;
         return result;
     }
 

@@ -14,9 +14,9 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        TablaService ts= new TablaService();
+        TablaService ts = new TablaService();
         Tabla tabla = new Tabla();
-        tabla= ts.getRandomJatekTer();
+        tabla = ts.getRandomJatekTer();
         Connection con;
 
 //        con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");

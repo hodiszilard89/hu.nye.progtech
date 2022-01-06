@@ -36,22 +36,23 @@ public class Tabla {
         this.jatekTer = jatekTer;
     }
 
-    private  int x=10;
-    private  int y=10;
+    private int x = 10;
+    private int y = 10;
 
-    public Tabla(){}
+    public Tabla() {
+    }
 
     public Tabla(Mezo[][] jatekTer) {
-        this.jatekTer=jatekTer;
-        }
+        this.jatekTer = jatekTer;
+    }
 
 
-    public Mezo getMezo(int i, int j){
+    public Mezo getMezo(int i, int j) {
         return jatekTer[i][j];
     }
 
 
-    public void setJatekTeMezo(int i, int j, boolean ertek){
+    public void setJatekTeMezo(int i, int j, boolean ertek) {
         jatekTer[i][j].setSzabad(ertek);
     }
 
@@ -60,8 +61,8 @@ public class Tabla {
         List<Pozicio> result = new ArrayList<>();
         int szabadHelyek;
         int x = 0, y = 0;
-        if (!orient) x = hajoHossza-1;
-        if (orient) y = hajoHossza-1;
+        if (!orient) x = hajoHossza - 1;
+        if (orient) y = hajoHossza - 1;
 
         for (int i = 0; i < 10 - x; i++) {
             for (int j = 0; j < 10 - y; j++) {
@@ -85,12 +86,11 @@ public class Tabla {
     }
 
 
-
     public void sorKiIratas(int i) {
-            System.out.printf("%2d",i+1);
-            for (int j = 0; j < 10; j++) {
-                System.out.print(jatekTer[i][j].toString());
-            }
+        System.out.printf("%2d", i + 1);
+        for (int j = 0; j < 10; j++) {
+            System.out.print(jatekTer[i][j].toString());
+        }
 
     }
 }

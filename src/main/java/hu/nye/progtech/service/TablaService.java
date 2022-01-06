@@ -12,15 +12,16 @@ public class TablaService implements MainServiceInterface {
     private final Random random = new Random();
     boolean orient;
 
-    public TablaService() {}
+    public TablaService() {
+    }
 
-    public Mezo[][] getNewTabla(){
+    public Mezo[][] getNewTabla() {
         Mezo[][] result = new Mezo[10][10];
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 result[i][j] = new Mezo(new Pozicio(i, j), true);
-              }
             }
+        }
         return result;
     }
 
@@ -44,11 +45,11 @@ public class TablaService implements MainServiceInterface {
     }
 
 
-    public Tabla getRandomJatekTer(){
-        List<Pozicio> szabadHajoHelyek ;
-        List<Hajo>  hajok=new ArrayList<>();
-        Tabla jatekTer=new Tabla(new TablaService().getNewTabla());
-        int h ;
+    public Tabla getRandomJatekTer() {
+        List<Pozicio> szabadHajoHelyek;
+        List<Hajo> hajok = new ArrayList<>();
+        Tabla jatekTer = new Tabla(new TablaService().getNewTabla());
+        int h;
         for (int j = 4; j > 0; j--) {
             h = j;
             while (h > 0) {
@@ -73,6 +74,7 @@ public class TablaService implements MainServiceInterface {
         }
         return result;
     }
+
     public boolean intToBool(int i) {
         return i == 1;
     }

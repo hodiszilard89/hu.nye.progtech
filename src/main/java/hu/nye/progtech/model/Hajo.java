@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class  Hajo implements HajoInterface {
+public class Hajo implements HajoInterface {
 
     private List<Pozicio> hajoElemek;
     private Pozicio kezdoPoz;

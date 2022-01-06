@@ -3,7 +3,7 @@ package hu.nye.progtech.model;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name= "jatekos")
+@XmlRootElement(name = "jatekos")
 public class Stat {
 
     private String jatekosNeve;
@@ -56,15 +56,16 @@ public class Stat {
         this.felbehagyott = felbehagyott;
     }
 
-    Stat(){}
+    Stat() {
+    }
 
     @Override
     public String toString() {
         return "Stat:\n" +
-                "JátekosNeve= " + jatekosNeve +"\n" +
-                "   Gyozelem= " + gyozelem +"\n" +
-                "  ÖsszJatek= " + osszJatek +"\n"+
-                "    vereseg= " + vereseg +"\n" +
-                "félbehagyott=" + felbehagyott ;
+                "JátekosNeve= " + jatekosNeve + "\n" +
+                "   Gyozelem= " + gyozelem + "\n" +
+                "  ÖsszJatek= " + osszJatek + "\n" +
+                "    vereseg= " + vereseg + "\n" +
+                "félbehagyott=" + felbehagyott;
     }
 }

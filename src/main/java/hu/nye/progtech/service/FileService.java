@@ -5,8 +5,8 @@ import java.io.File;
 
 public class FileService {
 
-    public void delete(String fileNev)  {
-        File f=new File(fileNev);
+    public void delete(String fileNev) {
+        File f = new File(fileNev);
         f.delete();
     }
 }

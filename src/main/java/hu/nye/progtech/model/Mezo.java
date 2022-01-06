@@ -25,7 +25,8 @@ public class Mezo {
     private boolean talalat;
     private boolean lovesHelye;
 
-    public Mezo(){}
+    public Mezo() {
+    }
 
     public Pozicio getPozicio() {
         return pozicio;
@@ -43,7 +44,7 @@ public class Mezo {
     }
 
     public void setLovesHelye() {
-        this.lovesHelye =true;
+        this.lovesHelye = true;
     }
 
     public void setTalalt() {

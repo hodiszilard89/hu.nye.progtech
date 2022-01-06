@@ -6,7 +6,7 @@ import jakarta.xml.bind.*;
 
 import java.io.File;
 
-public class GameSaveWithXml implements GameSaveRepoForXml{
+public class GameSaveWithXml implements GameSaveRepoForXml {
 
 
     @Override
@@ -15,9 +15,9 @@ public class GameSaveWithXml implements GameSaveRepoForXml{
         try {
             JAXBContext context = JAXBContext.newInstance((Tabla.class));
             Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            marshaller.marshal(tabla,new File(tablaNev));
+            marshaller.marshal(tabla, new File(tablaNev));
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -29,9 +29,9 @@ public class GameSaveWithXml implements GameSaveRepoForXml{
         try {
             JAXBContext context = JAXBContext.newInstance((Stat.class));
             Marshaller marshaller = context.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            marshaller.marshal(stat,new File (statTabla));
+            marshaller.marshal(stat, new File(statTabla));
         } catch (JAXBException e) {
 
             e.printStackTrace();

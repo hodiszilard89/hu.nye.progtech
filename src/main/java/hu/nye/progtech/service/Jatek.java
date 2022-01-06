@@ -19,15 +19,15 @@ public class Jatek {
     private static GameSaveWithJDBC gspJ;
     private static GameSaveWithXml gspX;
     Connection con;
-    private static  Tabla jatekosTabla;
-    private static Tabla aiTabla ;
+    private static Tabla jatekosTabla;
+    private static Tabla aiTabla;
     private static Tabla sajatLoves;
     private static Stat stat;
 
-    public Jatek(UIOutPutService uiOutPutService, UIInPutService uiInPutService, TablaService tablaService){
-         us = uiOutPutService;
-         ui = uiInPutService;
-         ts = tablaService;
+    public Jatek(UIOutPutService uiOutPutService, UIInPutService uiInPutService, TablaService tablaService) {
+        us = uiOutPutService;
+        ui = uiInPutService;
+        ts = tablaService;
 
 
     }
@@ -37,7 +37,7 @@ public class Jatek {
         this.aiTabla = aiTabla;
         this.sajatLoves = sajatLoves;
         this.stat = stat;
-        this.gspX=new GameSaveWithXml();
+        this.gspX = new GameSaveWithXml();
 //        try{
 //            con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");}
 //        catch (SQLException e){
@@ -46,13 +46,14 @@ public class Jatek {
 //        gsp=new GameSaveWithJDBC(con);
         inditas();
     }
-    private static void inditas( )  {
+
+    private static void inditas() {
 
         Random random = new Random();
         Pozicio loves;
         boolean jatekosTalal;
         boolean gepTalal;
-        int x1,y1;
+        int x1, y1;
 
         us.tablaKirajzolas(jatekosTabla, sajatLoves);
         loves = ui.koordinataBe();
@@ -93,8 +94,9 @@ public class Jatek {
             }
         }
     }
+
     static void mentes() {
-        if (ui.userValasz("Befejezed a játékot",System.in)) {
+        if (ui.userValasz("Befejezed a játékot", System.in)) {
             gspX.save(jatekosTabla, "jatekosTabla.xml");
             gspX.save(aiTabla, "aiTabla.xml");
             gspX.save(sajatLoves, "sajatloves.xml");

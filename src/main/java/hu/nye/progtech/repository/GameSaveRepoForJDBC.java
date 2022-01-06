@@ -7,8 +7,11 @@ import java.sql.SQLException;
 
 public interface GameSaveRepoForJDBC {
 
-    void save(Tabla jatekosTabla,Tabla sajatLoves,Tabla aiTabla) throws SQLException;
+    void save(Tabla jatekosTabla, Tabla sajatLoves, Tabla aiTabla) throws SQLException;
+
     Tabla loadTabla(String tablaNev);
+
     Stat loadStat();
+
     void delete() throws SQLException;
 }

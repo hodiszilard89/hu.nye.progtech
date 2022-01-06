@@ -7,6 +7,7 @@ import hu.nye.progtech.model.Mezo;
 import hu.nye.progtech.model.Pozicio;
 import hu.nye.progtech.repository.GameSaveWithJDBC;
 import hu.nye.progtech.repository.GameSaveWithXml;
+
 import hu.nye.progtech.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +20,6 @@ import java.util.List;
 
 @Configuration
 public class AppConfig {
-
 
 
     @Bean
@@ -45,9 +45,10 @@ public class AppConfig {
 
     @Bean
     Connection connection() throws SQLException {
-        Connection conection= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");
+        Connection conection = DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");
         return conection;
     }
+
     @Bean
     GameSaveWithJDBC gameSaveRep(Connection connection) {
         return new GameSaveWithJDBC(connection);
@@ -65,7 +66,7 @@ public class AppConfig {
 //    }
 
     @Bean
-    GameSaveWithXml gameSaveWithXml(){
+    GameSaveWithXml gameSaveWithXml() {
         return new GameSaveWithXml();
     }
 
@@ -75,6 +76,7 @@ public class AppConfig {
 
         return new MainController(tablaService, fileService, uiInPutService, gameSaveWithXml);
     }
+
     @Bean
     Pozicio pozicio() {
         return new Pozicio();
@@ -111,13 +113,10 @@ public class AppConfig {
     }
 
     @Bean
-    UjJatek ujJatek( UIInPutService uiInPutService, TablaService tablaService) {
+    UjJatek ujJatek(UIInPutService uiInPutService, TablaService tablaService) {
         System.out.println(uiInPutService);
         return new UjJatek(uiInPutService, tablaService);
     }
-
-
-
 
 
 }

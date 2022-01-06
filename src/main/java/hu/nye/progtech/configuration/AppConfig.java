@@ -5,11 +5,15 @@ import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Hajo;
 import hu.nye.progtech.model.Mezo;
 import hu.nye.progtech.model.Pozicio;
-import hu.nye.progtech.repository.GameSaveRep;
+import hu.nye.progtech.repository.GameSaveWithJDBC;
+import hu.nye.progtech.repository.GameSaveWithXml;
 import hu.nye.progtech.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -40,18 +44,37 @@ public class AppConfig {
     }
 
     @Bean
-    GameSaveRep gameSaveRep(){
-        return new GameSaveRep();
+    Connection connection() throws SQLException {
+        Connection conection= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");
+        return conection;
+    }
+    @Bean
+    GameSaveWithJDBC gameSaveRep(Connection connection) {
+        return new GameSaveWithJDBC(connection);
+    }
+//    @Bean
+//    GameSaveRep gameSaveRep(){
+//        return new GameSaveRep();
+//    }
+
+//    @Bean(initMethod = "start")
+//    MainController mainController(TablaService tablaService, FileService fileService,
+//                                  UIInPutService uiInPutService, GameSaveWithJDBC gameSaveWithJDBC) {
+//
+//        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithJDBC);
+//    }
+
+    @Bean
+    GameSaveWithXml gameSaveWithXml(){
+        return new GameSaveWithXml();
     }
 
     @Bean(initMethod = "start")
     MainController mainController(TablaService tablaService, FileService fileService,
-                                  UIInPutService uiInPutService, GameSaveRep gameSaveRep) {
+                                  UIInPutService uiInPutService, GameSaveWithXml gameSaveWithXml) {
 
-        return new MainController(tablaService, fileService, uiInPutService, gameSaveRep);
+        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithXml);
     }
-
-
     @Bean
     Pozicio pozicio() {
         return new Pozicio();

@@ -1,40 +1,12 @@
 package hu.nye.progtech.repository;
 
-import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.entity.Tabla;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
-import org.springframework.stereotype.Repository;
+import hu.nye.progtech.model.Stat;
+import jakarta.xml.bind.*;
 
 import java.io.File;
-import java.sql.Connection;
 
-
-public class GameSaveRep implements GameSaveRepoForXml {
-
-//    private Connection con;
-//
-//    @Override
-//    public void save(Tabla tabla, Stat stat) {
-//
-//    }
-//
-//    @Override
-//    public Tabla loadTabla() {
-//        return null;
-//    }
-//
-//    @Override
-//    public Stat loadStat() {
-//        return null;
-//    }
-//
-//    @Override
-//    public void close() throws Exception {
-//        con.close();
-//    }
+public class GameSaveWithXml implements GameSaveRepoForXml{
 
 
     @Override
@@ -45,9 +17,8 @@ public class GameSaveRep implements GameSaveRepoForXml {
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
 
-            marshaller.marshal(tabla,new File (tablaNev));
+            marshaller.marshal(tabla,new File(tablaNev));
         } catch (JAXBException e) {
-
             e.printStackTrace();
         }
     }
@@ -81,7 +52,6 @@ public class GameSaveRep implements GameSaveRepoForXml {
         Unmarshaller unmarshaller = context.createUnmarshaller();
         return (Stat) unmarshaller.unmarshal(new File(statTabla));
     }
-
 
 
 }

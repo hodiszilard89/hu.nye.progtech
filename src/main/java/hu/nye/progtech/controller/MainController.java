@@ -3,17 +3,18 @@ package hu.nye.progtech.controller;
 
 import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.entity.Tabla;
-import hu.nye.progtech.repository.GameSaveRep;
-import jakarta.xml.bind.JAXBException;
+import hu.nye.progtech.repository.GameSaveWithJDBC;
+import hu.nye.progtech.repository.GameSaveWithXml;
 import hu.nye.progtech.service.*;
-
-
+import jakarta.xml.bind.JAXBException;
 
 
 public class MainController {
     private TablaService ts ;
     private FileService fs;
-    private GameSaveRep gsp;
+    private GameSaveWithJDBC gspJ;
+    private GameSaveWithXml gspX;
+
     static final String jatekosTablaFile="jatekostabla.xml";
     static final String aiTablaFile="aitabla.xml";
     static final String jatekoLovesekFile="sajatloves.xml";
@@ -29,11 +30,11 @@ public class MainController {
     private UjJatek ujJatek;
     UIInPutService ui=new UIInPutService();
 
-    public MainController(TablaService ts, FileService fs, UIInPutService ui, GameSaveRep gsp) {
+    public MainController(TablaService ts, FileService fs, UIInPutService ui, GameSaveWithXml gspX) {
         this.ts = ts;
         this.fs = fs;
         this.ui = ui;
-        this.gsp=gsp;
+        this.gspX=gspX;
     }
 
     public MainController(){};
@@ -41,18 +42,21 @@ public class MainController {
         boolean letezikMentettJatek=true;
 
         try {
-            jatekosTabla = gsp.load(jatekosTablaFile);
-            aiTabla = gsp.load(aiTablaFile);
-            sajatLoves = gsp.load(jatekoLovesekFile);
-            stat = gsp.loadStat(jatekosStatFile);
+            jatekosTabla = gspX.load(jatekosTablaFile);
+            aiTabla = gspX.load(aiTablaFile);
+            sajatLoves = gspX.load(jatekoLovesekFile);
+            stat = gspX.loadStat(jatekosStatFile);
+//              jatekosTabla=gspJ.loadTabla("jatekostabla");
+//              aiTabla=gspJ.loadTabla("aitabla");
+//              sajatLoves=gspJ.loadTabla("sajatloves");
 
             }
          catch (IllegalArgumentException | NullPointerException | JAXBException e) {
 
              letezikMentettJatek = false;
-         }
+        }
 
-        if (letezikMentettJatek){
+        if ((letezikMentettJatek)&&(sajatLoves!=null)){
             if( !ui.userValasz("Folytatod az előző játékot? ", System.in)){
                 fs.delete(jatekosTablaFile);
                 fs.delete(jatekoLovesekFile);

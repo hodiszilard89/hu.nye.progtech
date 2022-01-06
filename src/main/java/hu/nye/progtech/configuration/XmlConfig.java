@@ -1,6 +1,5 @@
 package hu.nye.progtech.configuration;
 
-import hu.nye.progtech.repository.GameSaveRep;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -27,8 +26,5 @@ public class XmlConfig {
 
         return jaxbContext.createUnmarshaller();
     }
-    @Bean
-    GameSaveRep gameSaveRep(){
-        return new GameSaveRep();
-    }
+
 }

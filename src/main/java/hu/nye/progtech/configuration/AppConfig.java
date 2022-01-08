@@ -58,24 +58,28 @@ public class AppConfig {
 //        return new GameSaveRep();
 //    }
 
-//    @Bean(initMethod = "start")
-//    MainController mainController(TablaService tablaService, FileService fileService,
-//                                  UIInPutService uiInPutService, GameSaveWithJDBC gameSaveWithJDBC) {
-//
-//        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithJDBC);
-//    }
-
-    @Bean
-    GameSaveWithXml gameSaveWithXml() {
-        return new GameSaveWithXml();
-    }
-
     @Bean(initMethod = "start")
     MainController mainController(TablaService tablaService, FileService fileService,
-                                  UIInPutService uiInPutService, GameSaveWithXml gameSaveWithXml) {
+                                  UIInPutService uiInPutService, GameSaveWithJDBC gameSaveWithJDBC) {
 
-        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithXml);
+        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithJDBC);
     }
+
+
+
+//    @Bean(initMethod = "start")
+//    MainController mainController(TablaService tablaService, FileService fileService,
+//                                  UIInPutService uiInPutService, GameSaveWithXml gameSaveWithXml) {
+//
+//        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithXml);
+//    }
+
+//    @Bean
+//    GameSaveWithXml gameSaveWithXml() {
+//        return new GameSaveWithXml();
+//    }
+
+
 
     @Bean
     Pozicio pozicio() {
@@ -114,7 +118,7 @@ public class AppConfig {
 
     @Bean
     UjJatek ujJatek(UIInPutService uiInPutService, TablaService tablaService) {
-        System.out.println(uiInPutService);
+
         return new UjJatek(uiInPutService, tablaService);
     }
 

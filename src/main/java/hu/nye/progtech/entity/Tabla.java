@@ -10,6 +10,7 @@ import java.util.List;
 @XmlRootElement(name = "tabla")
 public class Tabla {
 
+
     public Mezo[][] getJatekTer() {
         return jatekTer;
     }
@@ -41,6 +42,8 @@ public class Tabla {
 
     public Tabla() {
     }
+
+
 
     public Tabla(Mezo[][] jatekTer) {
         this.jatekTer = jatekTer;

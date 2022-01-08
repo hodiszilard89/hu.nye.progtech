@@ -24,12 +24,12 @@ public class Jatek {
     private static Tabla sajatLoves;
     private static Stat stat;
 
+
+
     public Jatek(UIOutPutService uiOutPutService, UIInPutService uiInPutService, TablaService tablaService) {
         us = uiOutPutService;
         ui = uiInPutService;
         ts = tablaService;
-
-
     }
 
     public Jatek(Tabla jatekosTabla, Tabla aiTabla, Tabla sajatLoves, Stat stat) {
@@ -37,13 +37,13 @@ public class Jatek {
         this.aiTabla = aiTabla;
         this.sajatLoves = sajatLoves;
         this.stat = stat;
-        this.gspX = new GameSaveWithXml();
-//        try{
-//            con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");}
-//        catch (SQLException e){
-//            e.printStackTrace();
-//        }
-//        gsp=new GameSaveWithJDBC(con);
+       // this.gspX = new GameSaveWithXml();
+        try{
+            con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");}
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        gspJ=new GameSaveWithJDBC(con);
         inditas();
     }
 
@@ -61,7 +61,7 @@ public class Jatek {
         if (loves == null) {
             mentes();
         } else {
-            while (loves != null) {
+            while ((loves != null)&&(ts.talalatokSzama(sajatLoves)<20)) {
 
 
                 if (!aiTabla.getMezo(loves.getX(), loves.getY()).isSzabad()) {
@@ -97,13 +97,16 @@ public class Jatek {
 
     static void mentes() {
         if (ui.userValasz("Befejezed a játékot", System.in)) {
-            gspX.save(jatekosTabla, "jatekosTabla.xml");
-            gspX.save(aiTabla, "aiTabla.xml");
-            gspX.save(sajatLoves, "sajatloves.xml");
-            gspX.saveStat(stat, "statisztika.xml");
-//              gspJ.delete();
-//              gspJ.save(jatekosTabla,sajatLoves,aiTabla);
+//            gspX.save(jatekosTabla, "jatekosTabla.xml");
+//            gspX.save(aiTabla, "aiTabla.xml");
+//            gspX.save(sajatLoves, "sajatloves.xml");
+//            gspX.saveStat(stat, "statisztika.xml");
+              gspJ.delete();
+              gspJ.save(jatekosTabla,sajatLoves,aiTabla);
             System.out.println("Játék elmentve");
+        }
+        else{
+            gspJ.delete();
         }
 
     }

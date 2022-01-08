@@ -24,7 +24,17 @@ public class TablaService implements MainServiceInterface {
         }
         return result;
     }
-
+    public int talalatokSzama(Tabla tabla){
+        int result=0;
+        for(int i=0; i<10; i++){
+            for (int j=0; j<10; j++){
+                if (tabla.getJatekTer()[i][j].isTalalat()){
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
     public void hajoLerakas(Tabla tabla, Pozicio poz, int hossz, boolean orient) {
         Set<Pozicio> halmaz = new HashSet<>();
         int x = 0;

@@ -30,44 +30,43 @@ public class MainController {
     private UjJatek ujJatek;
     UIInPutService ui = new UIInPutService();
 
-    public MainController(TablaService ts, FileService fs, UIInPutService ui, GameSaveWithXml gspX) {
+    public MainController(TablaService ts, FileService fs, UIInPutService ui, GameSaveWithJDBC gspJ) {
         this.ts = ts;
         this.fs = fs;
         this.ui = ui;
-        this.gspX = gspX;
+        this.gspJ = gspJ;
     }
 
     public MainController() {
     }
 
-    ;
-
     public void start() {
         boolean letezikMentettJatek = true;
 
         try {
-            jatekosTabla = gspX.load(jatekosTablaFile);
-            aiTabla = gspX.load(aiTablaFile);
-            sajatLoves = gspX.load(jatekoLovesekFile);
-            stat = gspX.loadStat(jatekosStatFile);
-//              jatekosTabla=gspJ.loadTabla("jatekostabla");
-//              aiTabla=gspJ.loadTabla("aitabla");
-//              sajatLoves=gspJ.loadTabla("sajatloves");
+//            jatekosTabla = gspX.load(jatekosTablaFile);
+//            aiTabla = gspX.load(aiTablaFile);
+//            sajatLoves = gspX.load(jatekoLovesekFile);
+//            stat = gspX.loadStat(jatekosStatFile);
+              jatekosTabla=gspJ.loadTabla("jatekostabla");
+              aiTabla=gspJ.loadTabla("aitabla");
+              sajatLoves=gspJ.loadTabla("sajatloves");
 
-        } catch (IllegalArgumentException | NullPointerException | JAXBException e) {
+        } catch (IllegalArgumentException | NullPointerException  e) {
 
             letezikMentettJatek = false;
         }
 
         if ((letezikMentettJatek) && (sajatLoves != null)) {
             if (!ui.userValasz("Folytatod az előző játékot? ", System.in)) {
-                fs.delete(jatekosTablaFile);
-                fs.delete(jatekoLovesekFile);
-                fs.delete(jatekosStatFile);
-                fs.delete(aiTablaFile);
+//                fs.delete(jatekosTablaFile);
+//                fs.delete(jatekoLovesekFile);
+//                fs.delete(jatekosStatFile);
+//                fs.delete(aiTablaFile);
+                gspJ.delete();
                 new UjJatek();
             } else {
-                System.out.println("Üdvözöllek: " + stat.getJatekosNeve());
+               // System.out.println("Üdvözöllek: " + stat.getJatekosNeve());
                 new UjJatek(jatekosTabla, aiTabla, sajatLoves, stat);
             }
         } else {

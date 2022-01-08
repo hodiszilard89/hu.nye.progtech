@@ -27,7 +27,7 @@ public class UserInputTest {
         in= new ByteArrayInputStream("n".getBytes());
 
         //when
-        boolean result=ui.userValasz("Test kerdes ",in);
+        boolean result=ui.userValasz("Test kerdes",in);
 
         //then
         assertFalse(result);

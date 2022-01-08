@@ -50,7 +50,6 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
 
         Mezo[][] mezoTomb = new Mezo[10][10];
         Tabla result = new Tabla();
-        System.out.println(tablaNev);
         try (PreparedStatement ps = con.prepareStatement(SELECT_STATEMENT)) {
 
 
@@ -58,7 +57,7 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
 
             rs.next();
             if (rs.getRow() == 0) return null;
-            System.out.println(rs);
+
             String map = rs.getString(tablaNev);
             String[] tomb = map.split("-");
             int c = 0;

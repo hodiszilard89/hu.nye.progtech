@@ -114,7 +114,7 @@ public class AppConfig {
 
     @Bean
     UjJatek ujJatek(UIInPutService uiInPutService, TablaService tablaService) {
-        System.out.println(uiInPutService);
+
         return new UjJatek(uiInPutService, tablaService);
     }
 

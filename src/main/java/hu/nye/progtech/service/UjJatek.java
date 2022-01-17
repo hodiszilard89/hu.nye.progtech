@@ -1,7 +1,8 @@
 package hu.nye.progtech.service;
 
-import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.model.Stat;
+
 
 public class UjJatek {
     static final int x = 10;

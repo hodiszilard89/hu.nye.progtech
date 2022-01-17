@@ -1,5 +1,10 @@
 package hu.nye.progtech.configuration;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.List;
+
 import hu.nye.progtech.controller.MainController;
 import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Hajo;
@@ -7,16 +12,14 @@ import hu.nye.progtech.model.Mezo;
 import hu.nye.progtech.model.Pozicio;
 import hu.nye.progtech.repository.GameSaveWithJDBC;
 import hu.nye.progtech.repository.GameSaveWithXml;
-
-import hu.nye.progtech.service.*;
+import hu.nye.progtech.service.FileService;
+import hu.nye.progtech.service.Jatek;
+import hu.nye.progtech.service.TablaService;
+import hu.nye.progtech.service.UIInPutService;
+import hu.nye.progtech.service.UIOutPutService;
+import hu.nye.progtech.service.UjJatek;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.List;
-
 
 @Configuration
 public class AppConfig {
@@ -53,17 +56,20 @@ public class AppConfig {
     GameSaveWithJDBC gameSaveRep(Connection connection) {
         return new GameSaveWithJDBC(connection);
     }
-//    @Bean
-//    GameSaveRep gameSaveRep(){
-//        return new GameSaveRep();
-//    }
+    /*
+    @Bean
+    GameSaveRep gameSaveRep(){
+        return new GameSaveRep();
+    }
 
-//    @Bean(initMethod = "start")
-//    MainController mainController(TablaService tablaService, FileService fileService,
-//                                  UIInPutService uiInPutService, GameSaveWithJDBC gameSaveWithJDBC) {
-//
-//        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithJDBC);
-//    }
+    @Bean(initMethod = "start")
+    MainController mainController(TablaService tablaService, FileService fileService,
+                                  UIInPutService uiInPutService, GameSaveWithJDBC gameSaveWithJDBC) {
+
+        return new MainController(tablaService, fileService, uiInPutService, gameSaveWithJDBC);
+    }
+
+     */
 
     @Bean
     GameSaveWithXml gameSaveWithXml() {

@@ -1,11 +1,15 @@
 package hu.nye.progtech.repository;
 
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Mezo;
 import hu.nye.progtech.model.Pozicio;
 import hu.nye.progtech.model.Stat;
-import hu.nye.progtech.entity.Tabla;
-
-import java.sql.*;
 
 
 public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
@@ -57,7 +61,9 @@ public class GameSaveWithJDBC implements GameSaveRepoForJDBC, AutoCloseable {
             ResultSet rs = ps.executeQuery();
 
             rs.next();
-            if (rs.getRow() == 0) return null;
+            if (rs.getRow() == 0) {
+                return null;
+            }
             System.out.println(rs);
             String map = rs.getString(tablaNev);
             String[] tomb = map.split("-");

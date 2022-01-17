@@ -1,9 +1,11 @@
 package hu.nye.progtech.repository;
 
+
+import java.sql.SQLException;
+
 import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Stat;
 
-import java.sql.SQLException;
 
 public interface GameSaveRepoForJDBC {
 

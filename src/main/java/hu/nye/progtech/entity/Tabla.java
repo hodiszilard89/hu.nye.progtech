@@ -1,11 +1,13 @@
 package hu.nye.progtech.entity;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
-import hu.nye.progtech.model.Mezo;
-import hu.nye.progtech.model.Pozicio;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import hu.nye.progtech.model.Mezo;
+import hu.nye.progtech.model.Pozicio;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 
 @XmlRootElement(name = "tabla")
 public class Tabla {
@@ -14,20 +16,20 @@ public class Tabla {
         return jatekTer;
     }
 
-    public int getX() {
-        return x;
+    public int getSzelesseg() {
+        return szelesseg;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setSzelesseg(int szelesseg) {
+        this.szelesseg = szelesseg;
     }
 
-    public int getY() {
-        return y;
+    public int getMagassag() {
+        return magassag;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setMagassag(int magassag) {
+        this.magassag = magassag;
     }
 
     private Mezo[][] jatekTer;
@@ -36,8 +38,8 @@ public class Tabla {
         this.jatekTer = jatekTer;
     }
 
-    private int x = 10;
-    private int y = 10;
+    private int szelesseg = 10;
+    private int magassag = 10;
 
     public Tabla() {
     }
@@ -60,20 +62,27 @@ public class Tabla {
 
         List<Pozicio> result = new ArrayList<>();
         int szabadHelyek;
-        int x = 0, y = 0;
-        if (!orient) x = hajoHossza - 1;
-        if (orient) y = hajoHossza - 1;
+        int x = 0;
+        int y = 0;
+        if (!orient) {
+            x = hajoHossza - 1;
+        }
+        if (orient) {
+            y = hajoHossza - 1;
+        }
 
         for (int i = 0; i < 10 - x; i++) {
             for (int j = 0; j < 10 - y; j++) {
                 szabadHelyek = 0;
                 if (jatekTer[i][j].isSzabad()) {
                     for (int k = 0; k < hajoHossza; k++) {
-                        if ((orient) && (jatekTer[i][j + k].isSzabad()))
+                        if ((orient) && (jatekTer[i][j + k].isSzabad())) {
                             szabadHelyek++;
+                        }
 
-                        if ((!orient) && (jatekTer[i + k][j].isSzabad()))
+                        if ((!orient) && (jatekTer[i + k][j].isSzabad())) {
                             szabadHelyek++;
+                        }
                     }
                 }
                 if (szabadHelyek == hajoHossza) {

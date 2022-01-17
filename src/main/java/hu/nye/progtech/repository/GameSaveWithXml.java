@@ -1,10 +1,15 @@
 package hu.nye.progtech.repository;
 
+import java.io.File;
+
 import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Stat;
-import jakarta.xml.bind.*;
+import jakarta.xml.bind.JAXBContext;
+import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.Unmarshaller;
 
-import java.io.File;
+
 
 public class GameSaveWithXml implements GameSaveRepoForXml {
 

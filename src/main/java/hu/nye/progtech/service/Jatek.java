@@ -1,15 +1,15 @@
 package hu.nye.progtech.service;
 
-import hu.nye.progtech.repository.GameSaveWithJDBC;
+import java.sql.Connection;
+import java.util.Random;
+
+import hu.nye.progtech.entity.Tabla;
 import hu.nye.progtech.model.Pozicio;
 import hu.nye.progtech.model.Stat;
-import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.repository.GameSaveWithJDBC;
 import hu.nye.progtech.repository.GameSaveWithXml;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Random;
+
 
 public class Jatek {
 
@@ -38,12 +38,14 @@ public class Jatek {
         this.sajatLoves = sajatLoves;
         this.stat = stat;
         this.gspX = new GameSaveWithXml();
-//        try{
-//            con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");}
-//        catch (SQLException e){
-//            e.printStackTrace();
-//        }
-//        gsp=new GameSaveWithJDBC(con);
+        /*
+        try{
+            con= DriverManager.getConnection("jdbc:h2:tcp://localhost/./test", "sa", "admin");}
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        gsp=new GameSaveWithJDBC(con);
+        */
         inditas();
     }
 
@@ -53,7 +55,8 @@ public class Jatek {
         Pozicio loves;
         boolean jatekosTalal;
         boolean gepTalal;
-        int x1, y1;
+        int x1 = 0;
+        int y1 = 0;
 
         us.tablaKirajzolas(jatekosTabla, sajatLoves);
         loves = ui.koordinataBe();
@@ -64,11 +67,11 @@ public class Jatek {
             while (loves != null) {
 
 
-                if (!aiTabla.getMezo(loves.getX(), loves.getY()).isSzabad()) {
-                    sajatLoves.getMezo(loves.getX(), loves.getY()).setTalalt();
+                if (!aiTabla.getMezo(loves.getXkordinat(), loves.getYkordinat()).isSzabad()) {
+                    sajatLoves.getMezo(loves.getXkordinat(), loves.getYkordinat()).setTalalt();
                     jatekosTalal = true;
                 } else {
-                    sajatLoves.getMezo(loves.getX(), loves.getY()).setLovesHelye();
+                    sajatLoves.getMezo(loves.getXkordinat(), loves.getYkordinat()).setLovesHelye(true);
                     jatekosTalal = false;
                 }
                 x1 = random.nextInt(10);
@@ -77,7 +80,7 @@ public class Jatek {
                     jatekosTabla.getMezo(x1, y1).setTalalt();
                     gepTalal = true;
                 } else {
-                    jatekosTabla.getMezo(x1, y1).setLovesHelye();
+                    jatekosTabla.getMezo(x1, y1).setLovesHelye(true);
                     gepTalal = false;
                 }
                 us.tablaKirajzolas(jatekosTabla, sajatLoves);
@@ -101,8 +104,10 @@ public class Jatek {
             gspX.save(aiTabla, "aiTabla.xml");
             gspX.save(sajatLoves, "sajatloves.xml");
             gspX.saveStat(stat, "statisztika.xml");
-//              gspJ.delete();
-//              gspJ.save(jatekosTabla,sajatLoves,aiTabla);
+            /*
+             gspJ.delete();
+             gspJ.save(jatekosTabla,sajatLoves,aiTabla);
+             */
             System.out.println("Játék elmentve");
         }
 

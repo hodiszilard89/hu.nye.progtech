@@ -1,22 +1,19 @@
 package hu.nye.progtech.service;
 
-
-import hu.nye.progtech.model.Pozicio;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import hu.nye.progtech.model.Pozicio;
+
 public class UIInPutService {
 
-    static private final String kOODTINATA_REG = "^[a-jA-J]+\\:+(([0-9])||10)";
+    private static final String kOODTINATA_REG = "^[a-jA-J]+\\:+(([0-9])||10)";
 
     public UIInPutService() {
     }
-
-    ;
 
     public Pozicio koordinataBe() {
         Pozicio result = null;
@@ -69,7 +66,9 @@ public class UIInPutService {
                 result = true;
             }
 
-            if ((c != 'n') && (c != 'y')) throw new IOException();
+            if ((c != 'n') && (c != 'y')) {
+                throw new IOException();
+            }
         } catch (IOException e) {
             System.out.println("Nem megfelelő válasz");
 

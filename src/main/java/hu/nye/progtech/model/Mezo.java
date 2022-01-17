@@ -43,10 +43,6 @@ public class Mezo {
         this.lovesHelye = false;
     }
 
-    public void setLovesHelye() {
-        this.lovesHelye = true;
-    }
-
     public void setTalalt() {
         this.talalat = true;
     }
@@ -64,19 +60,19 @@ public class Mezo {
     }
 
 
-    @Override
     public String toString() {
+
         String result = "";
 
         if (lovesHelye) {
             return "\u001B[31m[X]";
-        }
+        } else
         if (getTalalat()) {
             return "\u001B[32m[0]";
-        }
+        } else
         if (isSzabad()) {
             return "\u001B[34m[ ]";
-        }
+        } else
         if (!isSzabad()) {
             return "\u001B[33m[#]";
         }
@@ -87,8 +83,12 @@ public class Mezo {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Mezo mezo = (Mezo) o;
         return szabad == mezo.szabad && Objects.equals(pozicio, mezo.pozicio);
     }

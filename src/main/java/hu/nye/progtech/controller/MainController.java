@@ -1,11 +1,14 @@
 package hu.nye.progtech.controller;
 
 
-import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.repository.GameSaveWithJDBC;
 import hu.nye.progtech.repository.GameSaveWithXml;
-import hu.nye.progtech.service.*;
+import hu.nye.progtech.service.FileService;
+import hu.nye.progtech.service.TablaService;
+import hu.nye.progtech.service.UIInPutService;
+import hu.nye.progtech.service.UjJatek;
 import jakarta.xml.bind.JAXBException;
 
 
@@ -23,10 +26,10 @@ public class MainController {
     static final int x = 10;
     static final int y = 10;
 
-    static private Tabla aiTabla;
-    static private Tabla sajatLoves;
-    static private Tabla jatekosTabla;
-    static private Stat stat;
+    private static Tabla aiTabla;
+    private static Tabla sajatLoves;
+    private static Tabla jatekosTabla;
+    private static Stat stat;
     private UjJatek ujJatek;
     UIInPutService ui = new UIInPutService();
 
@@ -40,8 +43,6 @@ public class MainController {
     public MainController() {
     }
 
-    ;
-
     public void start() {
         boolean letezikMentettJatek = true;
 
@@ -50,9 +51,11 @@ public class MainController {
             aiTabla = gspX.load(aiTablaFile);
             sajatLoves = gspX.load(jatekoLovesekFile);
             stat = gspX.loadStat(jatekosStatFile);
-//              jatekosTabla=gspJ.loadTabla("jatekostabla");
-//              aiTabla=gspJ.loadTabla("aitabla");
-//              sajatLoves=gspJ.loadTabla("sajatloves");
+            /*
+            jatekosTabla=gspJ.loadTabla("jatekostabla");
+            aiTabla=gspJ.loadTabla("aitabla");
+            sajatLoves=gspJ.loadTabla("sajatloves");
+            */
 
         } catch (IllegalArgumentException | NullPointerException | JAXBException e) {
 

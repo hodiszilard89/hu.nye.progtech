@@ -1,12 +1,19 @@
 package hu.nye.progtech.service;
 
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+
+import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.interfaceek.MainServiceInterface;
 import hu.nye.progtech.model.Hajo;
 import hu.nye.progtech.model.Mezo;
 import hu.nye.progtech.model.Pozicio;
-import hu.nye.progtech.entity.Tabla;
-import hu.nye.progtech.interfaceek.MainServiceInterface;
 
-import java.util.*;
+
 
 public class TablaService implements MainServiceInterface {
     private final Random random = new Random();
@@ -29,18 +36,22 @@ public class TablaService implements MainServiceInterface {
         Set<Pozicio> halmaz = new HashSet<>();
         int x = 0;
         int y = 0;
-        if (!orient) x = 1;
-        if (orient) y = 1;
+        if (!orient) {
+            x = 1;
+        }
+        if (orient) {
+            y = 1;
+        }
         for (int h = 0; h < hossz; h++) {
             for (int i = -1; i < 2; i++) {
                 for (int j = -1; j < 2; j++) {
-                    halmaz.add(new Pozicio((poz.getX() + (h * x)) + i, (poz.getY() + (h * y)) + j));
+                    halmaz.add(new Pozicio((poz.getXkordinat() + (h * x)) + i, (poz.getYkordinat() + (h * y)) + j));
                 }
             }
         }
         halmaz.removeIf(pozicio -> ((pozicio.isNegativ()) || (pozicio.isOut())));
         for (Pozicio pozicio : halmaz) {
-            tabla.setJatekTeMezo(pozicio.getX(), pozicio.getY(), false);
+            tabla.setJatekTeMezo(pozicio.getXkordinat(), pozicio.getYkordinat(), false);
         }
     }
 
@@ -67,8 +78,8 @@ public class TablaService implements MainServiceInterface {
         Tabla result = new Tabla(new TablaService().getNewTabla());
         for (Hajo hajo : hajok) {
             for (int j = 0; j < hajo.getHajoElemek().size(); j++) {
-                x = hajo.getHajoElemek().get(j).getX();
-                y = hajo.getHajoElemek().get(j).getY();
+                x = hajo.getHajoElemek().get(j).getXkordinat();
+                y = hajo.getHajoElemek().get(j).getYkordinat();
                 result.setJatekTeMezo(x, y, false);
             }
         }

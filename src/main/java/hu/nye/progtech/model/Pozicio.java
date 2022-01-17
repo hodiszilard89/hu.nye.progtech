@@ -3,63 +3,71 @@ package hu.nye.progtech.model;
 import java.util.Objects;
 
 public class Pozicio {
-    private int x;
-    private int y;
+    private int xkordinat;
+    private int ykordinat;
 
-    public void setX(int x) {
-        this.x = x;
+    public void setXkordinat(int xkordinat) {
+        this.xkordinat = xkordinat;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setYkordinat(int ykordinat) {
+        this.ykordinat = ykordinat;
     }
 
     public Pozicio() {
     }
 
     public Pozicio(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.xkordinat = x;
+        this.ykordinat = y;
     }
 
-    public int getX() {
-        return x;
+    public int getXkordinat() {
+        return xkordinat;
     }
 
-    public int getY() {
-        return y;
+    public int getYkordinat() {
+        return ykordinat;
     }
 
     @Override
     public String toString() {
         return "Pozicio{" +
-                "x=" + x +
-                ", y=" + y +
+                "x=" + xkordinat +
+                ", y=" + ykordinat +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Pozicio pozicio = (Pozicio) o;
-        return x == pozicio.x && y == pozicio.y;
+        return xkordinat == pozicio.xkordinat && ykordinat == pozicio.ykordinat;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
+        return Objects.hash(xkordinat, ykordinat);
     }
 
     public boolean isNegativ() {
         boolean result = false;
-        if ((getX() < 0) || (getY() < 0)) result = true;
+        if ((getXkordinat() < 0) || (getYkordinat() < 0)) {
+            result = true;
+        }
         return result;
     }
 
     public boolean isOut() {
         boolean result = false;
-        if ((getX() > 9) || (getY() > 9)) result = true;
+        if ((getXkordinat() > 9) || (getYkordinat() > 9)) {
+            result = true;
+        }
         return result;
     }
 

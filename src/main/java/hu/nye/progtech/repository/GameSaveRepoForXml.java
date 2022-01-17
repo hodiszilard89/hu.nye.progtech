@@ -1,7 +1,7 @@
 package hu.nye.progtech.repository;
 
-import hu.nye.progtech.model.Stat;
 import hu.nye.progtech.entity.Tabla;
+import hu.nye.progtech.model.Stat;
 import jakarta.xml.bind.JAXBException;
 
 public interface GameSaveRepoForXml {

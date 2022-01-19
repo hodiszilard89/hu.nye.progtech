@@ -104,12 +104,6 @@ public class AppConfig {
         return new Tabla(jatekter);
     }
 
-    /**
-     *
-     * @param hajoElemek
-     * @param kezdoPoz
-     * @return
-     */
     @Bean
     public Hajo hajo(List<Pozicio> hajoElemek, Pozicio kezdoPoz) {
         int hossz = 0;
